@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#336BED"
+    android:layout_height="match_parent">
+    <Button
+        android:text="Search Books"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/homeSearchBooksButton" />
+    <Button
+        android:text="Most Popular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/homePopularBooksButton" />
+    <Button
+        android:text="Catagories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/homeCategoriesButton" />
+    <Button
+        android:text="My Account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/homeMyAccountButton" />
+    <Button
+        android:text="My Favorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/homeMyFavoritesButton" />
+    <Button
+        android:text="Logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/homeLogoutButton" />
+</LinearLayout>
