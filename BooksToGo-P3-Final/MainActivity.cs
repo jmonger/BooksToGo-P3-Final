@@ -8,6 +8,7 @@ using System.Json;
 using System.Threading.Tasks;
 using System;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace BooksToGo_P3_Final
 {
@@ -16,7 +17,19 @@ namespace BooksToGo_P3_Final
     {
         EditText inputUserText;
         EditText inputPassText;
+        //LoggedInUser u = new LoggedInUser();
 
+/*
+        public void SetApplicationUser(string id, string firstName, string lastName, string email, string password)
+        {
+            //LoggedInUser u = new LoggedInUser();
+            u.Id = id;
+            u.FirstName = firstName;
+            u.LastName = lastName;
+            u.Email = email;
+            u.Password = password;
+        }
+        */
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,10 +39,13 @@ namespace BooksToGo_P3_Final
 
             Button signUpBtn = FindViewById<Button>(Resource.Id.signUpButton);
             Button loginBtn = FindViewById<Button>(Resource.Id.loginButton);
+            Button lostPassBtn = FindViewById<Button>(Resource.Id.lostPasswordButton);
+
             inputUserText = FindViewById<EditText>(Resource.Id.inputUserMain);
             inputPassText = FindViewById<EditText>(Resource.Id.inputPasswordMain);
 
 
+            lostPassBtn.Click += LostPassBtn_Click;
 
             signUpBtn.Click += SignUpBtn_Click;
 
@@ -53,9 +69,21 @@ namespace BooksToGo_P3_Final
                      Dialog dialog = alert.Create();
                      dialog.Show();
 
-   
+
                 }
+                else
+                {
+
+                }
+
+
             };
+        }
+
+        private void LostPassBtn_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(ForgotPasswordActivity));
+            StartActivity(nextActivity);
         }
 
         private async Task<JsonValue> FetchUsersAsync(string url)
@@ -84,7 +112,6 @@ namespace BooksToGo_P3_Final
         }
         private bool ParseAndInterpret(JsonValue json)
         {
-            Intent nextActivity = new Intent(this, typeof(HomeScreenActivity));
             dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json.ToString());
 
             string appUser = inputUserText.Text.ToString();
@@ -102,7 +129,35 @@ namespace BooksToGo_P3_Final
                 if (appUser.Equals(checkedUser) && appPass.Equals(checkedPass))
                 {
 
+
+                    // SetApplicationUser(obj._id, obj.FirstName, obj.LastName, obj.Email, obj.Password);
+
+
+                    Intent nextActivity = new Intent(this, typeof(HomeScreenActivity));
+
+                    LoggedInUser u = new LoggedInUser();
+
+                    /*
+                    ((ApplicationUserGlobal)this.Application).Id = obj._id;
+                    ((ApplicationUserGlobal)this.Application).FirstName = obj.FirstName;
+                    ((ApplicationUserGlobal)this.Application).LastName = obj.LastName;
+                    ((ApplicationUserGlobal)this.Application).Email = obj.Password;
+                    ((ApplicationUserGlobal)this.Application).Password = obj.Email;
+                    */
+
+                    u.Id = obj._id;
+                    u.FirstName = obj.FirstName;
+                    u.LastName = obj.LastName;
+                    u.Password = obj.Password;
+                    u.Email = obj.Email;
+
+
+                    var serializedUser = JsonConvert.SerializeObject(u);
+                    nextActivity.PutExtra("User", serializedUser);
                     StartActivity(nextActivity);
+
+
+
                     return true;
                     break;
                 }
@@ -120,6 +175,15 @@ namespace BooksToGo_P3_Final
             StartActivity(nextActivity);
 
         }
+    }
+
+    public class LoggedInUser 
+    {
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
 

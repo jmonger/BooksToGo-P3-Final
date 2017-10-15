@@ -9,24 +9,65 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 
 namespace BooksToGo_P3_Final
 {
     [Activity(Label = "HomeScreenActivity")]
     public class HomeScreenActivity : Activity
     {
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.HomeScreenPage);
             // Create your application here
 
+            var JsonString = Intent.GetStringExtra("User");
+            var UserObject = JsonConvert.DeserializeObject<LoggedInUser>(JsonString);
+
             Button logoutButton = FindViewById<Button>(Resource.Id.homeLogoutButton);
             Button searchBooksButton = FindViewById<Button>(Resource.Id.homeSearchBooksButton);
+            Button myAccountButton = FindViewById<Button>(Resource.Id.homeMyAccountButton);
+            Button catButton = FindViewById<Button>(Resource.Id.homeCategoriesButton);
+            Button popSearchButton = FindViewById<Button>(Resource.Id.homePopularBooksButton);
+            Button favoriteButton = FindViewById<Button>(Resource.Id.homeMyFavoritesButton);
+
+            favoriteButton.Click += FavoriteButton_Click;
+
+            popSearchButton.Click += PopSearchButton_Click;
+
+            catButton.Click += CatButton_Click;
+
+            myAccountButton.Click += MyAccountButton_Click;
 
             searchBooksButton.Click += SearchBooksButton_Click;
 
             logoutButton.Click += LogoutButton_Click;
+        }
+
+        private void FavoriteButton_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(FavoritesPageActivity));
+            StartActivity(nextActivity);
+        }
+
+        private void PopSearchButton_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(PopularSearchActivity));
+            StartActivity(nextActivity);
+        }
+
+        private void CatButton_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(CategoriesMainActivity));
+            StartActivity(nextActivity);
+        }
+
+        private void MyAccountButton_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(MyAccountActivity));
+            StartActivity(nextActivity);
         }
 
         private void SearchBooksButton_Click(object sender, EventArgs e)

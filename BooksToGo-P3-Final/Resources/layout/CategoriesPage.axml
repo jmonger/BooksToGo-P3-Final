@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#336BED"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="Categories"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <Button
+        android:text="Science Fiction/Fantasy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catScifiButton" />
+    <Button
+        android:text="Satire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catSatButton" />
+    <Button
+        android:text="History"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catHistButton" />
+    <Button
+        android:text="Mystery/Horror"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catMysHorButton" />
+    <Button
+        android:text="Self-Help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catSelfButton" />
+    <Button
+        android:text="Young Adult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catYoungAdultButton" />
+    <Button
+        android:text="Children"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catChildrenButton" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="133.0dp"
+        android:id="@+id/space1" />
+    <Button
+        android:text="Home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/catHomeButton" />
+</LinearLayout>
