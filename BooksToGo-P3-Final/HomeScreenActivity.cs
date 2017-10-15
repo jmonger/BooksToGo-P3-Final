@@ -22,8 +22,17 @@ namespace BooksToGo_P3_Final
             // Create your application here
 
             Button logoutButton = FindViewById<Button>(Resource.Id.homeLogoutButton);
+            Button searchBooksButton = FindViewById<Button>(Resource.Id.homeSearchBooksButton);
+
+            searchBooksButton.Click += SearchBooksButton_Click;
 
             logoutButton.Click += LogoutButton_Click;
+        }
+
+        private void SearchBooksButton_Click(object sender, EventArgs e)
+        {
+            Intent nextActivity = new Intent(this, typeof(SearchBooksActivity));
+            StartActivity(nextActivity);
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
