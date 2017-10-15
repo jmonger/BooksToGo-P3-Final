@@ -21,7 +21,29 @@ namespace BooksToGo_P3_Final
             SetContentView(Resource.Layout.HomeScreenPage);
             // Create your application here
 
+            Button logoutButton = FindViewById<Button>(Resource.Id.homeLogoutButton);
 
+            logoutButton.Click += LogoutButton_Click;
+        }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.SetTitle("CONFIRM LOGOUT");
+            alert.SetMessage("Ready To Leave?");
+            alert.SetNegativeButton("CANCEL", (senderAlert, args) =>
+            {
+
+            });
+
+            alert.SetPositiveButton("LOGOUT", (senderAlert, args) =>
+            {
+                this.FinishAffinity();
+            });
+
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
         }
     }
 }
