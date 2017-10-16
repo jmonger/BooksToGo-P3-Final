@@ -17,6 +17,8 @@ namespace BooksToGo_P3_Final
     public class HomeScreenActivity : Activity
     {
 
+        LoggedInUser U;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -25,6 +27,8 @@ namespace BooksToGo_P3_Final
 
             var JsonString = Intent.GetStringExtra("User");
             var UserObject = JsonConvert.DeserializeObject<LoggedInUser>(JsonString);
+
+            U = UserObject;
 
             Button logoutButton = FindViewById<Button>(Resource.Id.homeLogoutButton);
             Button searchBooksButton = FindViewById<Button>(Resource.Id.homeSearchBooksButton);
@@ -72,7 +76,10 @@ namespace BooksToGo_P3_Final
 
         private void SearchBooksButton_Click(object sender, EventArgs e)
         {
+            var serializedUser = JsonConvert.SerializeObject(U);
+            
             Intent nextActivity = new Intent(this, typeof(SearchBooksActivity));
+            nextActivity.PutExtra("User", serializedUser);
             StartActivity(nextActivity);
         }
 

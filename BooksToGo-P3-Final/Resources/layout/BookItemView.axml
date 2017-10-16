@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@drawable/border"
+    android:layout_height="100dp">
+    <ImageView
+        android:src="@drawable/books"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/bookImg"
+        android:layout_marginRight="0.0dp"
+        android:padding="15dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout1"
+        android:layout_width="270dp"
+        android:padding="15dp"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <TextView
+            android:text="Harry Potter and the Sorceres Stone"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:gravity="top"
+            android:id="@+id/bookTitle"
+            android:textColor="#FFFFFF" />
+        <TextView
+            android:text="JK Rowlings"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:id="@+id/bookAuthor"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</LinearLayout>

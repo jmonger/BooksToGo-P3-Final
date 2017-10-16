@@ -2,51 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:minWidth="25px"
-    android:background="#336BED"
-    android:minHeight="25px">
-    <FrameLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="92.5dp"
-        android:id="@+id/frameLayout1">
-        <ImageView
-            android:src="@drawable/books"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/imageView1" />
-    </FrameLayout>
+    android:minHeight="625px"
+    android:background="#336BED">
     <TextView
         android:text="Search our library's database!"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
-        android:layout_marginTop="50.0dp"
+        android:layout_marginTop="4.5dp"
         android:layout_marginBottom="8.0dp"
         android:layout_marginLeft="18.5dp" />
-    <SearchView
+    <EditText
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/searchView1"
+        android:id="@+id/searchText"
         android:contentDescription="What book are you looking for?" />
     <Button
         android:text="Search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
-    <Space
+        android:id="@+id/searchPageSearchButton" />
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="208.0dp"
-        android:id="@+id/space1" />
+        android:layout_height="800px"
+        android:id="@+id/booksList" />
     <Button
         android:text="Home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2" />
+        android:id="@+id/searchPageHomeButton" />
 </LinearLayout>
