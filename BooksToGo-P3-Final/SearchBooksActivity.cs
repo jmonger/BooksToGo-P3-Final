@@ -55,15 +55,15 @@ namespace BooksToGo_P3_Final
                 simpleBookList = SearchUser(jsonBooks);
 
 
-                //var adapter = new SimpleListItem2Adapter(this, sb);
+                var adapter = new SimpleListItem2Adapter(this, simpleBookList);
                 //adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, titleAuthor);
-                //booksListView.Adapter = adapter;
+                booksListView.Adapter = adapter;
 
                 Intent nextActivity = new Intent(this, typeof(BookList));
 
-                var serializedBooks = JsonConvert.SerializeObject(simpleBookList);
-                nextActivity.PutExtra("Books", serializedBooks);
-                StartActivity(nextActivity);
+                //var serializedBooks = JsonConvert.SerializeObject(simpleBookList);
+                //nextActivity.PutExtra("Books", serializedBooks);
+                //StartActivity(nextActivity);
             };
             homeButton.Click += HomeButton_Click;
 
@@ -75,8 +75,8 @@ namespace BooksToGo_P3_Final
         {
             dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json.ToString());
 
-            string query = searchObject.Text.ToString();
-            //string query = temp.ToLower();
+            string temp = searchObject.Text.ToString();
+            string query = temp.ToLower();
 
 
             //JsonValue userData = json["objects"];
@@ -92,21 +92,21 @@ namespace BooksToGo_P3_Final
 
             foreach (var obj in jsonObj.objects)
             {
-                title = obj.Title;
-               // title = title.ToLower();
+               title = obj.Title;
+               string sanitizedTitle = title.ToLower();
 
                 author = obj.Author;
-                //author = author.ToLower();
+                string sanitizedAuthor = author.ToLower();
 
                 genre = obj.Genre;
-               // genre = genre.ToLower();
+              string sanitizedGenre = genre.ToLower();
 
                 
                 
 
                
 
-                if (title.Contains(query) || author.Contains(query) || genre.Contains(query))
+                if (sanitizedTitle.Contains(query) || sanitizedAuthor.Contains(query) || sanitizedGenre.Contains(query))
                 {
                     SimpleBook newSimpleBook = new SimpleBook();
                     newSimpleBook.Title = title;
